@@ -1,0 +1,50 @@
+<div class="container">
+  <p>
+    <strong>Price:</strong>
+    <%= number_to_currency(@car.price) %>
+  </p>
+
+  <p>
+    <strong>Make:</strong>
+    <%= @car.make %>
+  </p>
+
+  <p>
+    <strong>Model:</strong>
+    <%= @car.kind %>
+  </p>
+
+  <p>
+    <strong>Year:</strong>
+    <%= @car.year %>
+  </p>
+
+  <div class="well">
+      <h3>Meet the Seller: </h3>
+      <p>
+        <aside>Contact <%= @car.user.name %> </aside>
+        <%= @car.user.description %>
+      </p>
+  </div>
+
+  <% if user_signed_in? && @car.user_id != current_user.id %>
+      <% if @car.arrived? %>
+
+        <h3> This car has been purchased </h3>
+
+      <% else %>
+
+          <%= form_for @charge do |f| %>
+              <%= f.hidden_field :amount, value: @car.price %>
+              <%= f.hidden_field :item, value: @car.id %>
+              <%= f.hidden_field :owner_id, value: @car.user_id %>
+                  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="<%= ENV["stripe_publishable_key"] %>"
+                        data-description="<%= "#{@car.kind}"%>" data-name="Thanks!"
+                        data-amount="<%= @car.price * 100 %>" data-image="http://placehold.it/50x50" >
+                  </script>
+          <% end %>
+      <% end %>
+  <% end %>
+  <%= link_to 'Back', cars_path %>
+</div>

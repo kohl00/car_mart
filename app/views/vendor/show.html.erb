@@ -1,0 +1,14 @@
+<div class="row">
+	<div class="jumbotron center-block become_a_vendor ">
+	  <h1>
+	  	Become a vendor!
+	  </h1>
+	  <p>
+	  	In order to begin selling on AutoGrotto, you must sign up with <%= link_to 'Stripe', "http://www.stripe.com", target: "_blank" %> - an easy, lightweight, and secure payment gateway.
+	  </p>
+	  <p>
+	  	<%= link_to image_tag("light-on-light.png"), "/users/auth/stripe_connect", class: "nav_stripe_connect" if (!current_user || current_user.uid == nil) %>
+	  </p>
+
+	</div>
+</div>

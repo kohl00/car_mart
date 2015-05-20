@@ -1,0 +1,24 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12 col-md-6 col-md-offset-3 purchases">
+			<h2> Your active purchases: </h2>
+
+
+				<% if @cars %>
+					<% @cars.each_with_index do |purchase,i| %>
+						<%= i + 1 %>.
+						<%= purchase.car.make %>
+						<%= purchase.car.kind %>
+						<%= purchase.car.year %>
+						<%= "Not yet arrived" if !purchase.car.arrived? %>
+
+					            <%= link_to 'My car arrived!', complete_charge_path(charge_id: purchase.id, token: purchase.token, price: purchase.price, customer_id: purchase.customer_id, destination: purchase.vendor.uid), class: 'btn btn-default' %>
+					<% end %>
+				<% else %>
+					<p>
+						You currently have no active purchases. Head over to the market to buy a car!
+					</p>
+				<% end %>
+			</div>
+	</div>
+</div>

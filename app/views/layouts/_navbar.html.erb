@@ -1,0 +1,74 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to 'AutoGrotto', root_path, class: "navbar-brand" %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="row nav_container_row">
+            <ul class="nav navbar-nav">
+
+                    <div class="col-xs-12 col-md-3 vendor_link">
+                     
+                        <li>
+                          <%= current_user.uid == nil ? link_to('List a Car', vendor_show_path ) : link_to('List a Car', new_car_path) %>
+                        </li>
+                    </div>
+
+                    <div class="col-xs-12 col-md-3">
+                      <%= form_tag(filter_by_make_path, method: :get, :id=>'make_filter') do %>
+                        <li class="form-group filter-group">
+                          <%#= select(:car,:make, Car.pluck(:make).uniq, {prompt: 'Select By Make'}, class: "form-control", onchange: "$('#make_filter').submit();") %>
+                          <%= select(:car,:make, options_helper(Car,"make","tester"), {prompt: "Select by Make"}, onchange: "$('#make_filter').submit();" )%>
+                        </li>
+                      <% end %>
+                    </div>
+
+                    <div class=" col-xs-12 col-md-3">
+                      <%= form_tag(filter_by_kind_path, method: :get, :id=>'kind_filter') do %>
+                        <li class="form-group filter-group">
+                          <%= select(:car,:kind, options_helper(Car,"kind","tester"), {prompt: "Select by Model"}, onchange: "$('#kind_filter').submit();" )%>
+                        </li>
+                      <% end %>
+                    </div>
+
+                    <div class="col-xs-12 col-md-3">
+                      <%= form_tag(filter_by_year_path, method: :get, :id=>'year_filter') do %>
+                        <li class="form-group filter-group ">
+                          <%= select(:car,:year, options_helper(Car,"year","tester"), {prompt: "Select by Year"}, onchange: "$('#year_filter').submit();" )%>
+                        </li>
+                      <% end %>
+                    </div>
+
+            </ul>
+
+            <div class="nav navbar-nav navbar-right">
+
+                <div class="hidden-xs hidden-sm col-md-12 session_toggle">
+                  <% if current_user.nil? %>
+                    <li><%= link_to "Sign In", new_user_session_path, class: "session_status" %></li>
+                  <% else %>
+                    <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "session_status" %></li>
+                  <% end %>
+                </div>
+
+                <div class="col-xs-4 col-xs-offset-4 col-sm-6 col-sm-offset-4 hidden-md hidden-lg session_toggle">
+                  <% if current_user.nil? %>
+                    <li><%= link_to "Sign In", new_user_session_path, class: "session_status" %></li>
+                  <% else %>
+                    <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "session_status" %></li>
+                  <% end %>
+                </div>
+            </div>
+      </div>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

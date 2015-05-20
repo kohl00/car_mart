@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @charge.item %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @charge.price %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @charge.user_id %>
+</p>
+
+<p>
+  <strong>Vendor:</strong>
+  <%= @charge.vendor_id %>
+</p>
+
+<p>
+  <strong>Token:</strong>
+  <%= @charge.token %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @charge.customer_id %>
+</p>
+
+<p>
+  <strong>Completed:</strong>
+  <%= @charge.completed %>
+</p>
+
+<%= link_to 'Edit', edit_charge_path(@charge) %> |
+<%= link_to 'Back', charges_path %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  price: 9.99
+  make: MyString
+  user_id: 1
+  arrived: false
+  model: MyString
+  year: 1
+
+two:
+  price: 9.99
+  make: MyString
+  user_id: 1
+  arrived: false
+  model: MyString
+  year: 1

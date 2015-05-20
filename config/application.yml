@@ -1,0 +1,7 @@
+development:
+  access_token: ca_6Brsadx2NNBLeKa7LJAhfnU0cF9LrXRp
+  stripe_api_key: sk_test_V0ert0E6ikiuwrGUlF1hSaer
+  stripe_publishable_key: pk_test_qljQBl6BU68DK82CiRyu183R
+test:
+
+production: 
