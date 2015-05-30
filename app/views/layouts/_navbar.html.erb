@@ -19,7 +19,9 @@
                     <div class="col-xs-12 col-md-3 vendor_link">
                      
                         <li>
-                          <%= current_user.uid == nil ? link_to('List a Car', vendor_show_path ) : link_to('List a Car', new_car_path) %>
+                          <% if user_signed_in? %>
+                            <%= current_user.uid == nil ? link_to('List a Car', vendor_show_path ) : link_to('List a Car', new_car_path) %>
+                            <% end %>
                         </li>
                     </div>
 
@@ -47,7 +49,6 @@
                         </li>
                       <% end %>
                     </div>
-
             </ul>
 
             <div class="nav navbar-nav navbar-right">

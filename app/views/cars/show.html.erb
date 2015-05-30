@@ -18,7 +18,9 @@
     <strong>Year:</strong>
     <%= @car.year %>
   </p>
-
+  <p>
+    <%= image_tag attachment_url(@car, :car_image, :fill, 300, 300, format: "jpeg") if @car.car_image %>
+  </p>
   <div class="well">
       <h3>Meet the Seller: </h3>
       <p>

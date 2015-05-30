@@ -4,7 +4,8 @@ class CarsController < ApplicationController
   # GET /cars
   # GET /cars.json
   def index
-    @cars = Car.where.not('arrived = ?', true)
+    @cars = Car.availabe_for_purchase
+
 
   end
 
@@ -41,7 +42,7 @@ class CarsController < ApplicationController
   # POST /cars
   # POST /cars.json
   def create
-    @car = Car.new(car_params)
+    @car = current_user.cars.new(car_params)
 
     respond_to do |format|
       if @car.save
@@ -86,6 +87,6 @@ class CarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_params
-      params.require(:car).permit(:price, :make, :user_id, :arrived, :kind, :year, :description)
+      params.require(:car).permit(:price, :make, :user_id, :car_image, :arrived, :kind, :year, :description)
     end
 end

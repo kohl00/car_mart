@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'complete_charge', to: 'charges#complete'
 
   root to: "cars#index"
-  match '*profiles' => redirect('/'), via: [:get,:post]
+  #match 'profiles' => redirect('/'), via: [:get,:post]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

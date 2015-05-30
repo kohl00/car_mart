@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150517154540) do
+ActiveRecord::Schema.define(version: 20150527172759) do
 
   create_table "cars", force: :cascade do |t|
     t.integer  "price"
@@ -20,9 +20,10 @@ ActiveRecord::Schema.define(version: 20150517154540) do
     t.boolean  "arrived"
     t.string   "kind"
     t.integer  "year"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.text     "description"
+    t.string   "car_image_id"
   end
 
   create_table "charges", force: :cascade do |t|
@@ -58,6 +59,7 @@ ActiveRecord::Schema.define(version: 20150517154540) do
     t.datetime "updated_at"
     t.text     "description"
     t.boolean  "vendor"
+    t.string   "profile_image_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

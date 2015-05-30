@@ -6,7 +6,7 @@ class ChargesController < ApplicationController
 
   def complete
     @charge = Charge.find(params[:charge_id])
-    @car = Car.find_by(user_id: @charge.user_id, arrived: false, kind: @charge.car_id)
+    @car = Car.find_by(user_id: @charge.user_id, arrived: false, id: @charge.car_id)
 
     Stripe.api_key = ENV["stripe_api_key"]
     token = params[:token]

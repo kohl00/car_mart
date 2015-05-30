@@ -29,8 +29,10 @@ gem 'devise'
 gem 'figaro'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'thin'
-
-
+gem 'mini_magick', '~> 4.2.4'
+gem 'refile', require: 'refile/rails'
+gem 'refile-mini_magick'
+gem 'pundit', '~> 1.0.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

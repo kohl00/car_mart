@@ -10,7 +10,7 @@ class OmniauthCallbacksController < ApplicationController
       vendor: true
     })
       # anything else you need to do in response..
-      sign_in_and_redirect new_car_path
+      sign_in_and_redirect @user
       flash[:notice] = "Signed in with #{current_user.provider.to_s.titleize} successfully. You can now list a car"
     else
       session["devise.stripe_connect_data"] = request.env["omniauth.auth"]

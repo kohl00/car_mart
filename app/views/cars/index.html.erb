@@ -7,7 +7,11 @@
     <% @cars.each do |car| %>
     <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
-        <%= image_tag("http://fillmurray.com/250/200", alt: 'car') %>
+        <% if car.car_image %>
+          <%= image_tag attachment_url(car, :car_image, :fill, 250, 200, format: "jpg") %>
+        <% else %>
+          <%= image_tag("http://fillmurray.com/250/200", alt: 'car') %>
+          <% end %>
         <div class="caption">
           <h3><%= "#{car.make} #{car.kind} - #{car.year}" %></h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.</p>
