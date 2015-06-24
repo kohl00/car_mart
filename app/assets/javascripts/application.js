@@ -20,9 +20,6 @@ $(function(){
 
 	var $current_user_status = $('meta:last-of-type').data('name');
 	var $height;
-	//var $footer = $('.footer');
-
-	//$footer.css({'top': $(document).height()});
 	
 	if($current_user_status === 'NilClass'){
 		(function signupNotifier(){
@@ -36,5 +33,8 @@ $(function(){
 		})();
 	}
 
+	$('.disclaimer').on('click',function(){
+		alert("This site is for educational purposes only.");
+	})
 });
 

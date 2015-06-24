@@ -164,12 +164,15 @@
   	left: 0px;
   	font-size: 12px;
   	.copyright{
-  		display: inline;
-  		
+  		display: inline-block;
+  		margin-top: 20px;
+  		margin-bottom: 20px;
   	}
   	.disclaimer{
-  		display: inline;
-
+  		display: inline-block;
+  		margin-top: 15px;
+  		margin-bottom: 15px;
+  		cursor: pointer;
   	}
 }
 
