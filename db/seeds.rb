@@ -17,6 +17,12 @@ User.create(
 	id: 2,
 	name: 'Edwin')
 
+User.create(
+	email: bob123@yahoo.com,
+	password: 'password',
+	id: 3,
+	name: 'Bob')
+
 Car.create(
 	make: 'Ford',
 	kind: 'Mustang',
@@ -37,4 +43,11 @@ Car.create(
 	year: 2014,
 	price: 98000,
 	user_id: 1
+	)
+
+Car.create(
+	make: 'Honda',
+	kind: 'Civic',
+	year: 2010,
+	user_id: 2
 	)

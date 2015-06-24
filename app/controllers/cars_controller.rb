@@ -1,12 +1,16 @@
 class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
-
   # GET /cars
   # GET /cars.json
   def index
+
     @cars = Car.availabe_for_purchase
+    authorize(@cars)
 
-
+    respond_to do |format|
+      format.html
+      format.json { render json: @cars }
+    end
   end
 
   def by_make
@@ -28,6 +32,7 @@ class CarsController < ApplicationController
   # GET /cars/1.json
   def show
     @charge = Charge.new
+    authorize(@car)
   end
 
   # GET /cars/new
@@ -37,13 +42,14 @@ class CarsController < ApplicationController
 
   # GET /cars/1/edit
   def edit
+    authorize(@car)
   end
 
   # POST /cars
   # POST /cars.json
   def create
     @car = current_user.cars.new(car_params)
-
+    authorize(@car)
     respond_to do |format|
       if @car.save
         format.html { redirect_to @car, notice: 'Car was successfully created.' }

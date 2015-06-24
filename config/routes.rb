@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  get 'profiles/:id', to: 'profiles#show'
-  get 'purchases/index'
+  get 'profiles', to: 'profiles#show', as: 'profiles'
+  get 'purchases/index', to: 'purchases#index', as: 'purchases'
   get 'vendor/show'
+
+  post '/contact' => 'profiles#contact'
 
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks"}
   resources :cars
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
   get 'complete_charge', to: 'charges#complete'
 
   root to: "cars#index"
+
   #match 'profiles' => redirect('/'), via: [:get,:post]
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,26 +1,43 @@
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <p class="modal-dialogue"> 
+        Oops! It look's like you havent logged in yet! In order to take full advantage of AutoGrotto you must:
+      </br>
+       <span>
+          <%= link_to 'Sign In', new_user_session_path %> or <%= link_to 'Sign Up', new_user_registration_path %>
+       </span>
+     </p>
+    </div>
+  </div>
+</div>
+
+      <!-- modal end-->
 <div class="container-fluid">
   <div class="page-header">
     <h1>Car Market</h1>
   </div>
 
   <div class="row">
-    <% @cars.each do |car| %>
-    <div class="col-sm-6 col-md-4">
-      <div class="thumbnail">
-        <% if car.car_image %>
-          <%= image_tag attachment_url(car, :car_image, :fill, 250, 200, format: "jpg") %>
-        <% else %>
-          <%= image_tag("http://fillmurray.com/250/200", alt: 'car') %>
+    
+          <% @cars.each do |car| %>
+            <div class="col-sm-6 col-md-4 car-block">
+              <div class="thumbnail">
+                <% if car.car_image %>
+                  <%= image_tag attachment_url(car, :car_image, :fill, 250, 200, format: "jpg") %>
+                <% else %>
+                  <%= image_tag("http://fillmurray.com/250/200", alt: 'car') %>
+                  <% end %>
+                <div class="caption">
+                  <h4><%= "#{car.make} #{car.kind} - #{car.year}" %></h4>
+                  <p><%= car.description.truncate(30, separator: /\s/) if car.description %></p>
+                  
+                      <%= link_to "Take a closer look", car, class: "btn btn-default show-btn", role: "button" %>
+                  
+                </div>
+              </div>
+            </div>
           <% end %>
-        <div class="caption">
-          <h3><%= "#{car.make} #{car.kind} - #{car.year}" %></h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.</p>
-          <p> 
-              <%= link_to "Take a closer look", car, class: "btn btn-default", role: "button" %>
-          </p>
-        </div>
-      </div>
-    </div>
-    <% end %>
+      
   </div>
 </div>

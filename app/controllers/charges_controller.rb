@@ -46,6 +46,6 @@ class ChargesController < ApplicationController
     @car.user_id = @charge.user_id
     @car.arrived = false
     @car.save
-    redirect_to root_path, success: "Thanks for purchases your car!"
+    redirect_to root_path, success: "Thanks for purchasing your car!"
   end
 end

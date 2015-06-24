@@ -5,12 +5,29 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta data-name=<%="#{current_user.class}"%>>
 </head>
 <body>
-<%= render partial: 'layouts/navbar' %>
-<%= render partial: 'layouts/flashmsg' %>
+	<%= render partial: 'layouts/navbar' %>
+	<%= render partial: 'layouts/flashmsg' %>
 
-<%= yield %>
+	<%= yield %>
 
+	<div class="row">
+		<div class="footer">
+			<p class="copyright">
+				&copy; 2015 - Built By Kohl
+			</p>
+			<p class="disclaimer pull-right"> 
+				All Rights Reserved</br>
+				Disclaimer
+			</p>
+		</div>
+	</div>
 </body>
+<script>
+	var $footer = $('.footer');
+	$footer.css({'top': $(document).height()});
+
+</script>
 </html>

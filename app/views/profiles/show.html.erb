@@ -1,5 +1,5 @@
 <h2><%= @user.name %></h2>
 
 <% if @user == current_user %>
-	<p><%= link_to 'Your Purchases', purchases_index_path %></p>
+	<p><%= link_to 'Your Purchases', purchases_path %></p>
 <% end %>
